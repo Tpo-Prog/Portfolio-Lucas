@@ -2,25 +2,26 @@ name: Deploy Astro to GitHub Pages
 
 on:
   push:
-    branches: [master]
+    branches: [master]  # o main, según tu rama
   workflow_dispatch:
 
 permissions:
   contents: read
   pages: write
   id-token: write
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: 18
       - run: npm ci
       - run: npm run build
-      - uses: actions/upload-pages-artifact@v2
+      - uses: actions/configure-pages@v4
+      - uses: actions/upload-pages-artifact@v3  # ✅ versión actual
         with:
           path: ./dist
 
@@ -31,5 +32,5 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/deploy-pages@v1
+      - uses: actions/deploy-pages@v4  # ✅ versión actual
         id: deployment
