@@ -17,7 +17,7 @@ export default function ProjectsCard(props) {
       </div>
       <div className={style.container_btn}>
         <a className={style.btn_url} href={props.url} target="_blank">
-          Saiba Mais
+          Learn More
         </a>
       </div>
     </div>

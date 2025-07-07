@@ -10,6 +10,8 @@ export default defineConfig({
   adapter: vercel({
     webAnalytics: {
       enable: true,
+      site: 'https://Tpo-Prog.github.io',
+      base: '/Portfolio-Lucas',
     },
   }),
   integrations: [react(), tailwind()],

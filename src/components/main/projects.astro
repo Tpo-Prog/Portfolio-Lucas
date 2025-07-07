@@ -2,7 +2,7 @@
 import ProjectsCard from "../projects-card/projects-card.jsx";
 import style from "../../styles/projects.module.css";
 
-/* API PUBLICA DO GITHUB */
+/* API PUBLICA DE GITHUB*/
 const user = await fetch("https://api.github.com/users/ldantsc/repos", {
   headers: { authorization: import.meta.env.API_TOKEN },
 });
@@ -19,18 +19,18 @@ const newArr = userData.filter((data) => {
 
 <div id="container-projects" class="">
   <div id="container-projects-title" class=`${style.container_projects_title}`>
-    <h2 data-aos="fade-up" class="title">Meu projetos</h2>
+    <h2 data-aos="fade-up" class="title">Projects</h2>
     <p data-aos="fade-up" class=`${style.subtitle}`>
-      Esta sessão contém alguns dos meus projetos <span>pessoais</span> ou <span
-        >profissionais</span
+      This section contains some of my <span>personal</span> or <span
+        >professional projects. </span 
       >
-      realizados durante o meu <span>aprendizado/carreira</span> como desenvolvedor.
-      Utilize o botão "saiba mais" para conferir no <span
-        >meu repositório do Github</span
-      > (deploy no repositório)
+      These projects were developed throughout my <span>learning journey and career</span> as a web developer.
+      Use the "Learn more" button to check them out on <span
+        >my GitHub repository.</span
+      > (The deployed version is available in the repository.)
     </p>
     <p data-aos="fade-up" class=`${style.attention}`>
-      Observação: pode conter projetos em andamento
+      Note: Some projects may still be in progress.
     </p>
   </div>
   <div id="container-projects-card" class=`${style.container_projects_card}`>
@@ -50,6 +50,6 @@ const newArr = userData.filter((data) => {
     }
   </div>
   <div data-aos="fade-up" class=`${style.container_text_foot}`>
-    <p>Aguarde para mais projetos no futuro...</p>
+    <p>Stay tuned for more projects coming soon......</p>
   </div>
 </div>
