@@ -13,21 +13,30 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    # Aplica esta carpeta como cwd para todos los run
     defaults:
       run:
         working-directory: proyect/portfolio-Lucas
 
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 18
-      - run: npm ci
-      - run: npm run build
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+
       - uses: actions/configure-pages@v4
+
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: proyect/portfolio-Lucas/dist
+          path: dist
 
   deploy:
     needs: build
