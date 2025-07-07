@@ -14,28 +14,43 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: proyect/portfolio-Lucas
-
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Debug: ruta y contenido
+        run: |
+          echo "→ PWD actual:"
+          pwd
+          echo "--- Contenido raíz del repo ---"
+          ls -R .
+          echo "--- Contenido ./proyect ---"
+          ls -R proyect
+          echo "--- Contenido ./proyect/portfolio-Lucas ---"
+          ls -R proyect/portfolio-Lucas
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 18
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          cd proyect/portfolio-Lucas
+          npm ci
 
       - name: Build site
-        run: npm run build
+        run: |
+          cd proyect/portfolio-Lucas
+          npm run build
 
-      - uses: actions/configure-pages@v4
+      - name: Configure Pages
+        uses: actions/configure-pages@v4
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: proyect/portfolio-Lucas/dist
 
   deploy:
     needs: build
@@ -43,6 +58,8 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
-      - uses: actions/deploy-pages@v4
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
         id: deployment
