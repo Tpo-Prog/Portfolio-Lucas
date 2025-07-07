@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+import Main from "../components/main/main.astro";
+import About from "../components/main/about.astro";
+import Certifications from "../components/main/certificates.astro";
+import Tecnologies from "../components/main/tecnologies.astro";
+import Projects from "../components/main/projects.astro";
+import Footer from "../components/footer/footer.astro";
+import "./global.css";
+---
+
+<BaseLayout>
+  <section id="home" class="container">
+    <Main />
+  </section>
+  <section id="about">
+    <About />
+  </section>
+  <section id="certificates">
+    <Certifications />
+  </section>
+  <section id="tecnologies">
+    <Tecnologies />
+  </section>
+  <section id="projects">
+    <Projects />
+  </section>
+  <Footer />
+</BaseLayout>
