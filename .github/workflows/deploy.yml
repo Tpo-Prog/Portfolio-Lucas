@@ -18,7 +18,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Debug: ruta y contenido
+      - name: "Debug: ruta y contenido"
         run: |
           echo "→ PWD actual:"
           pwd
@@ -58,7 +58,6 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
