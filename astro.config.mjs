@@ -12,7 +12,7 @@ export default defineConfig({
     webAnalytics: {
       enable: true,
       site: "https://Tpo-Prog.github.io",
-      base: "Portfolio-Lucas",
+      base: "/Portfolio-Lucas",
     },
   }),
   integrations: [react(), tailwind()],
